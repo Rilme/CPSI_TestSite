@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(to bottom right, #0050a0, #87ceeb, #0050a0);
+        position: relative;
+      }
+
+      .loading-text {
+        font-size: 24px;
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .loading-text.fade-out {
+        opacity: 0;
+      }
+
+      .loading-text.hidden {
+        display: none;
+      }
+
+      .loading-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        color: #ffffff;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .loading-button.fade-in {
+        opacity: 1;
+      }
+
+      .loading-circle {
+        position: absolute;
+        bottom: 300px;
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(0, 112, 243, 0.2);
+        border-top: 4px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transition: opacity 1s ease-in-out;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-circle.hidden {
+        display: none;
+      }
+
+      .fade-in {
+        animation: fadein 1s forwards;
+      }
+
+      .fade-out {
+        animation: fadeout 1s forwards;
+      }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeout {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading-text-1" class="loading-text">
+      Extracting Information...
+    </div>
+    <div id="loading-text-2" class="loading-text hidden">
+      Loading Information...
+    </div>
+    <div id="loading-button" class="loading-button hidden">
+      <button class='button' onclick="redirectToExtractedInformation()">
+        See Extracted Information
+      </button>
+    </div>
+    <div class="loading-circle" id="loading-circle"></div>
+
+    <script>
+      function redirectToExtractedInformation() {
+        window.location.href = "Validate.html";
+      }
+
+      setTimeout(function () {
+        document.getElementById("loading-text-1").classList.add("fade-out");
+        setTimeout(function () {
+          document.getElementById("loading-text-1").classList.add("hidden");
+          document.getElementById("loading-circle").classList.remove("hidden");
+          document.getElementById("loading-text-2").classList.remove("hidden");
+          setTimeout(function () {
+            document.getElementById("loading-text-2").classList.add("fade-out");
+            setTimeout(function () {
+              document.getElementById("loading-text-2").classList.add("hidden");
+              document
+                .getElementById("loading-button")
+                .classList.add("fade-in");
+              document.getElementById("loading-circle").classList.add("hidden");
+            }, 1000);
+          }, 2000);
+        }, 1000);
+      }, 3000);
+    </script>
+  </body>
+</html>

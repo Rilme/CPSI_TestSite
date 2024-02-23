@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class='title'>Editable Input Example</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom right, #0050a0, #87ceeb, #0050a0);
+        text-align: center;
+        margin-top: 50px;
+      }
+        .title{
+          color: white;
+          font-family: sans-serif;
+        }
+      
+      .main-content {
+        min-height: 100vh;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .input-container {
+        margin-bottom: 20px;
+        
+      }
+
+      input {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 300px; /* Adjust width as needed */
+      }
+
+      button {
+        background-color: #0070f3;
+        color: #ffffff;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        flex: 1; /* Distribute space evenly */
+        margin: 0 5px; /* Adjust margin as needed */
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="title">CPSI SCAN A DOC</h1>
+    </header>
+
+    <main class="main-content">
+      <div class="input-container">
+        <h2>Enter your first name:</h2>
+        <input
+          type="text"
+          id="firstNameInput"
+          placeholder="Type your first name..."
+        />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your last name:</h2>
+        <input
+          type="text"
+          id="lastNameInput"
+          placeholder="Type your last name..."
+        />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your date of birth:</h2>
+        <input type="date" id="dobInput" />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your address:</h2>
+        <input
+          type="text"
+          id="addressInput"
+          placeholder="Type your address..."
+        />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your Driver's License Number:</h2>
+        <input
+          type="text"
+          id="licenseNumberInput"
+          placeholder="Type your license number..."
+        />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your Height:</h2>
+        <input type="text" id="heightInput" placeholder="Type your height..." />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your Weight:</h2>
+        <input type="text" id="weightInput" placeholder="Type your weight..." />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your Driver's License Expiration Date:</h2>
+        <input type="date" id="expirationDateInput" />
+      </div>
+
+      <div class="input-container">
+        <h2>Enter your Sex:</h2>
+        <select id="sexInput">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="button-container">
+        <button onclick="submitData()">Submit</button>
+        <button onclick="goBack()">Back</button>
+      </div>
+    </main>
+
+    <script>
+      window.onload = function () {
+        var storedFirstName = sessionStorage.getItem("firstName");
+        var storedLastName = sessionStorage.getItem("lastName");
+        var storedDob = sessionStorage.getItem("dob");
+        var storedAddress = sessionStorage.getItem("address");
+        var storedLicenseNumber = sessionStorage.getItem("licenseNumber");
+        var storedHeight = sessionStorage.getItem("height");
+        var storedWeight = sessionStorage.getItem("weight");
+        var storedExpirationDate = sessionStorage.getItem("expirationDate");
+        var storedSex = sessionStorage.getItem("sex");
+
+        if (storedFirstName && storedLastName) {
+          document.getElementById("firstNameInput").value = storedFirstName;
+          document.getElementById("lastNameInput").value = storedLastName;
+        }
+
+        if (storedDob) {
+          document.getElementById("dobInput").value = storedDob;
+        }
+
+        if (storedAddress) {
+          document.getElementById("addressInput").value = storedAddress;
+        }
+
+        if (storedLicenseNumber) {
+          document.getElementById("licenseNumberInput").value =
+            storedLicenseNumber;
+        }
+
+        if (storedHeight) {
+          document.getElementById("heightInput").value = storedHeight;
+        }
+
+        if (storedWeight) {
+          document.getElementById("weightInput").value = storedWeight;
+        }
+
+        if (storedExpirationDate) {
+          document.getElementById("expirationDateInput").value =
+            storedExpirationDate;
+        }
+
+        if (storedSex) {
+          document.getElementById("sexInput").value = storedSex;
+        }
+      };
+
+      function submitData() {
+        var firstName = document.getElementById("firstNameInput").value;
+        var lastName = document.getElementById("lastNameInput").value;
+        var dob = document.getElementById("dobInput").value;
+        var address = document.getElementById("addressInput").value;
+        var licenseNumber = document.getElementById("licenseNumberInput").value;
+        var height = document.getElementById("heightInput").value;
+        var weight = document.getElementById("weightInput").value;
+        var expirationDate = document.getElementById(
+          "expirationDateInput",
+        ).value;
+        var sex = document.getElementById("sexInput").value;
+
+        sessionStorage.setItem("firstName", firstName);
+        sessionStorage.setItem("lastName", lastName);
+        sessionStorage.setItem("dob", dob);
+        sessionStorage.setItem("address", address);
+        sessionStorage.setItem("licenseNumber", licenseNumber);
+        sessionStorage.setItem("height", height);
+        sessionStorage.setItem("weight", weight);
+        sessionStorage.setItem("expirationDate", expirationDate);
+        sessionStorage.setItem("sex", sex);
+
+        window.location.href = "loadin.html"; // Update the file name here
+      }
+
+      function goBack() {
+        window.location.href = "index.html"; // Update the file name here
+      }
+    </script>
+  </body>
+</html>
