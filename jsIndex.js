@@ -57,7 +57,7 @@ function uploadFile(name, file) {
       uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
     }
   });
- // let formData = new FormData();
- // formData.append("file", file);
-  //xhr.send(formData);
+  let formData = new FormData();
+  formData.append("file", file);
+  xhr.send(formData);
 }
