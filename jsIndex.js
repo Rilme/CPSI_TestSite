@@ -21,7 +21,7 @@ fileInput.onchange = ({ target }) => {
 
 function uploadFile(file, name) {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "YOUR_POWER_AUTOMATE_FLOW_HTTP_ENDPOINT");
+  xhr.open("POST", "https://prod-92.westus.logic.azure.com:443/workflows/b8aed472476d4e30a762027d45f29a3f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=RvJN_krp58oEEFEz6KX-ye_0Yu-9v3hGlbN9JMQuMC4");
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () {
