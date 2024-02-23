@@ -15,41 +15,35 @@ fileInput.onchange = ({ target }) => {
       let splitName = fileName.split(".");
       fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
     }
-    uploadFile(file, fileName); // Pass file and fileName to uploadFile function
+    uploadFile(file, fileName);
   }
 };
 
 function uploadFile(file, name) {
-  let powerAutomateEndpoint = "https://prod-92.westus.logic.azure.com:443/workflows/b8aed472476d4e30a762027d45f29a3f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=RvJN_krp58oEEFEz6KX-ye_0Yu-9v3hGlbN9JMQuMC4"; // Replace with your Power Automate endpoint
-  
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "YOUR_POWER_AUTOMATE_FLOW_HTTP_ENDPOINT");
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Handle successful upload if needed
+      console.log("File uploaded successfully");
+    }
+  };
+
   let formData = new FormData();
   formData.append("file", file);
   formData.append("name", name);
 
-  fetch(powerAutomateEndpoint, {
-    method: "POST",
-    body: formData
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.text();
-  })
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('There has been a problem with your fetch operation:', error);
-  });
+  xhr.send(JSON.stringify({ file: formData }));
 }
 
 function confirmUpload() {
   if (
     confirm("Are you sure you want to submit the information for extraction?")
   ) {
-    fileInput.click(); // Trigger file input change event
-    // window.location.href = "loadin.html"; // Redirect to another page
+    // uploadFile();
+    window.location.href = "loadin.html"; // Redirect to Validation.html
   } else {
     // User clicked Cancel, do nothing
   }
