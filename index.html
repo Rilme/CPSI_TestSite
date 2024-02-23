@@ -1,40 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CPSI SmartScan</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-  </head>
-  <body>
-    <div class="area">
-      <h1 class="title">CPSI</h1>
-      <div class="upload-dl">
-        <div class="wrapper">
-          <header>Driver's License Uploader</header>
-          <form action="#">
-            <input class="file-input" type="file" name="file" hidden multiple />
-            <i class="fas fa-cloud-upload-alt"></i>
-            <p>Browse File to Upload</p>
-          </form>
-          <section class="progress-area"></section>
-          <section class="uploaded-area"></section>
-          <input
-            class="button"
-            type="button"
-            value="Upload"
-            onclick="confirmUpload()"
-          /><br />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPSI SmartScan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+  <div class="area">
+    <h1 class="title">CPSI</h1>
+    <div class="upload-dl">
+      <div class="wrapper">
+        <header>Driver's License Uploader</header>
+        <form id="uploadForm" action="#">
+          <!-- Added id attribute to file input -->
+          <input id="imageInput" class="file-input" type="file" name="file" hidden multiple />
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Browse File to Upload</p>
+        </form>
+        <section class="progress-area"></section>
+        <section class="uploaded-area"></section>
+        <!-- Changed onclick event to call uploadImage() function -->
+        <input class="button" type="button" value="Upload" onclick="uploadImage()" /><br />
       </div>
-      <button class="button" onclick="window.location.href = 'Manual.html';">
-        Manual Upload
-      </button>
-      <script src="jsIndex.js"></script>
     </div>
-  </body>
+    <button class="button" onclick="window.location.href = 'Manual.html';">
+      Manual Upload
+    </button>
+    <script src="jsIndex.js"></script>
+    <script>
+      function uploadImage() {
+        var formData = new FormData();
+        var imageFile = document.getElementById('imageInput').files[0];
+        formData.append('image', imageFile);
+
+        fetch('https://prod-92.westus.logic.azure.com:443/workflows/b8aed472476d4e30a762027d45f29a3f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=RvJN_krp58oEEFEz6KX-ye_0Yu-9v3hGlbN9JMQuMC4', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Image uploaded successfully!');
+            } else {
+                alert('Failed to upload image.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while uploading image.');
+        });
+      }
+    </script>
+  </div>
+</body>
 </html>
