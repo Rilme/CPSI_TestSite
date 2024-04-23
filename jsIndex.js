@@ -11,6 +11,13 @@ fileInput.onchange = ({ target }) => {
   let file = target.files[0];
   if (file) {
     let fileName = file.name;
+    // Check if the file extension is valid
+    if (!/\.(jpg|jpeg|png|gif|pdf)$/i.test(fileName)) {
+      alert("Please select a valid file (JPG, JPEG, PNG, GIF, or PDF).");
+      fileInput.value = ""; // Clear the file input
+      return;
+    }
+
     if (fileName.length >= 12) {
       let splitName = fileName.split(".");
       fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
@@ -64,11 +71,15 @@ function uploadFile(name) {
 }
 
 function confirmUpload() {
-  if (
-    confirm("Are you sure you want to submit the information for extraction?")
-  ) {
-    // uploadFile();
-    window.location.href = "loadin.html"; // Redirect to Validation.html
+  let file = fileInput.files[0];
+  if (!file) {
+    alert("Please select a file to upload.");
+    return; // Exit the function early if no file is selected
+  }
+
+  if (confirm("Are you sure you want to submit the information for extraction?")) {
+    window.location.href = "loadin.html";
+    // window.location.href = "loadin.html"; // Redirect to Validation.html
   } else {
     // User clicked Cancel, do nothing
   }
