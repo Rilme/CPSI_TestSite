@@ -28,7 +28,7 @@ fileInput.onchange = ({ target }) => {
 
 function uploadFile(name) {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "upload.php");
+  xhr.open("PUT", "https://prod-173.westus.logic.azure.com:443/workflows/19a7802636e7475fb92406b50488ca70/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Y23Xo-p_makAwXqKg9nJduQmOaMXl5McFk2LZ4ujXVk");
   xhr.upload.addEventListener("progress", ({ loaded, total }) => {
     let fileLoaded = Math.floor((loaded / total) * 100);
     let fileTotal = Math.floor(total / 1000);
