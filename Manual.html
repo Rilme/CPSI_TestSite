@@ -134,6 +134,33 @@
         </select>
       </div>
 
+      <!-- New input fields for Insurance Company, Member ID, Group Number, RxBin, and Issuer -->
+      <div class="input-container">
+        <h2>Enter your Insurance Company:</h2>
+        <input type="text" id="insuranceCompanyInput" placeholder="Type your insurance company..." />
+      </div>
+      
+      <div class="input-container">
+        <h2>Enter your Member ID:</h2>
+        <input type="text" id="memberIDInput" placeholder="Type your member ID..." />
+      </div>
+      
+      <div class="input-container">
+        <h2>Enter your Group Number:</h2>
+        <input type="text" id="groupNumberInput" placeholder="Type your group number..." />
+      </div>
+      
+      <div class="input-container">
+        <h2>Enter your RxBin:</h2>
+        <input type="text" id="rxBinInput" placeholder="Type your RxBin..." />
+      </div>
+      
+      <div class="input-container">
+        <h2>Enter your Issuer:</h2>
+        <input type="text" id="issuerInput" placeholder="Type your issuer..." />
+      </div>
+      <!-- End of new input fields -->
+
       <div class="button-container">
         <button onclick="submitData()">Submit</button>
         <button onclick="goBack()">Back</button>
@@ -151,6 +178,11 @@
         var storedWeight = sessionStorage.getItem("weight");
         var storedExpirationDate = sessionStorage.getItem("expirationDate");
         var storedSex = sessionStorage.getItem("sex");
+        var storedInsuranceCompany = sessionStorage.getItem("insuranceCompany");
+        var storedMemberID = sessionStorage.getItem("memberID");
+        var storedGroupNumber = sessionStorage.getItem("groupNumber");
+        var storedRxBin = sessionStorage.getItem("rxBin");
+        var storedIssuer = sessionStorage.getItem("issuer");
 
         if (storedFirstName && storedLastName) {
           document.getElementById("firstNameInput").value = storedFirstName;
@@ -186,6 +218,26 @@
         if (storedSex) {
           document.getElementById("sexInput").value = storedSex;
         }
+        
+        if (storedInsuranceCompany) {
+          document.getElementById("insuranceCompanyInput").value = storedInsuranceCompany;
+        }
+        
+        if (storedMemberID) {
+          document.getElementById("memberIDInput").value = storedMemberID;
+        }
+        
+        if (storedGroupNumber) {
+          document.getElementById("groupNumberInput").value = storedGroupNumber;
+        }
+        
+        if (storedRxBin) {
+          document.getElementById("rxBinInput").value = storedRxBin;
+        }
+        
+        if (storedIssuer) {
+          document.getElementById("issuerInput").value = storedIssuer;
+        }
       };
 
       function submitData() {
@@ -200,6 +252,11 @@
           "expirationDateInput",
         ).value;
         var sex = document.getElementById("sexInput").value;
+        var insuranceCompany = document.getElementById("insuranceCompanyInput").value;
+        var memberID = document.getElementById("memberIDInput").value;
+        var groupNumber = document.getElementById("groupNumberInput").value;
+        var rxBin = document.getElementById("rxBinInput").value;
+        var issuer = document.getElementById("issuerInput").value;
 
         sessionStorage.setItem("firstName", firstName);
         sessionStorage.setItem("lastName", lastName);
@@ -210,6 +267,11 @@
         sessionStorage.setItem("weight", weight);
         sessionStorage.setItem("expirationDate", expirationDate);
         sessionStorage.setItem("sex", sex);
+        sessionStorage.setItem("insuranceCompany", insuranceCompany);
+        sessionStorage.setItem("memberID", memberID);
+        sessionStorage.setItem("groupNumber", groupNumber);
+        sessionStorage.setItem("rxBin", rxBin);
+        sessionStorage.setItem("issuer", issuer);
 
         window.location.href = "loadin.html"; // Update the file name here
       }
