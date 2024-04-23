@@ -1,40 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CPSI SmartScan</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-  </head>
-  <body>
-    <div class="area">
-      <img class="logo" src="trubridgelogo.png" />
-      <div class="upload-dl">
-        <div class="wrapper">
-          <header>Information Uploader</header>
-          <form action="#">
-            <input class="file-input" type="file" name="file" hidden multiple />
-            <i class="fas fa-cloud-upload-alt"></i>
-            <p class="upload-text">Browse File to Upload</p> <!-- Added class "upload-text" -->
-          </form>
-          <section class="progress-area"></section>
-          <section class="uploaded-area"></section>
-          <input
-            class="button"
-            type="button"
-            value="Upload"
-            onclick="confirmUpload()"
-          /><br />
-        </div>
-      </div>
-      <button class="button" onclick="window.location.href = 'Manual.html';">
-        Manual Upload
-      </button>
-      <script src="jsIndex.js"></script>
-    </div>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Upload</title>
+<style>
+  .hidden-button {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+</style>
+</head>
+<body>
+  <h1>Upload Image</h1>
+  <input type="file" id="imageInput" accept="image/*">
+  <button class="hidden-button" onclick="uploadImage()">Upload</button>
+
+  <script>
+    function uploadImage() {
+      const input = document.getElementById('imageInput');
+      const file = input.files[0];
+      
+      if (!file) {
+        alert('Please select an image file.');
+        return;
+      }
+      
+      // Create FormData object and append the file
+      const formData = new FormData();
+      formData.append('image', file);
+      
+      // Send the request
+      fetch('https://prod-179.westus.logic.azure.com:443/workflows/e0fe3655b90b4cb480161411e70ed5b4/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PtOXynWz1HD8mSDaebhy9KmAkeDyIRVJJ1TShFTy9bQ', {
+        method: 'PUT',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // Check if response is empty
+        if (response.status === 204) {
+          return; // No content, return nothing
+        }
+        return response.json(); // Parse JSON response
+      })
+      .then(data => {
+        if (data) {
+          console.log(data); // Handle response from the API
+        }
+        alert('Image uploaded successfully!');
+      })
+      .catch(error => {
+        alert('There was a problem with the upload. Please try again later.');
+      });
+    }
+  </script>
+</body>
 </html>
