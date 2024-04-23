@@ -261,7 +261,6 @@ button:hover {
   font-size: 10px;
 }
 
-
 .upload-text {
-  margin-bottom: 15px; /* Adjust the margin as needed */
+  margin-bottom: -1px; /* Adjust the margin as needed */
 }
