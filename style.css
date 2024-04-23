@@ -232,3 +232,31 @@ button:hover {
     font-size: 10px;
   }
 }
+
+.wrapper form {
+  height: auto;
+  padding: 20px;
+}
+
+.progress-area .row .content {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.progress-area .details {
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+.progress-area .content .progress-bar {
+  width: 100%;
+}
+
+.uploaded-area .row .details {
+  margin-left: 0;
+  margin-top: 5px;
+}
+
+.uploaded-area .row .details .size {
+  font-size: 10px;
+}
