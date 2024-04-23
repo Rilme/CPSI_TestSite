@@ -47,8 +47,7 @@ body {
 }
 
 .wrapper {
-  width: 90%; /* Adjusted width for responsiveness */
-  max-width: 500px; /* Set a maximum width */
+  width: 430px;
   background: #fff;
   border-radius: 5px;
   padding: 30px;
@@ -61,6 +60,7 @@ body {
   font-weight: 600;
   text-align: center;
 }
+
 
 .wrapper form {
   height: 167px;
@@ -87,7 +87,7 @@ form p {
   font-size: 16px;
 }
 
-.section .row {
+section .row {
   margin-bottom: 10px;
   background: #E9F0FF;
   list-style: none;
@@ -98,12 +98,12 @@ form p {
   justify-content: space-between;
 }
 
-.section .row i {
+section .row i {
   color: #00bd51;
   font-size: 30px;
 }
 
-.section .details span {
+section .details span {
   font-size: 14px;
 }
 
@@ -171,6 +171,8 @@ form p {
   background: linear-gradient(to bottom right, #bfbfbf, #ffffff, #bfbfbf);
   width: 100%;
   height: 100vh;
+
+
 }
 
 .button2 {
@@ -178,7 +180,7 @@ form p {
   border-radius: 4px; 
   background-color: #00bd51;
   color: white;
-  padding: 10px; /* Adjusted padding */
+  padding: 2px 3px;
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -186,10 +188,10 @@ form p {
 }
 
 .button {
-  width: 100%;
+  width:100%;
   background-color: #00bd51;
   color: white;
-  padding: 10px; /* Adjusted padding */
+  padding: 2px 3px;
   font-size: 1.5rem;
   border: none;
   border-radius: 4px;
@@ -199,4 +201,34 @@ form p {
 
 button:hover {
   background-color: #000000;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper form {
+    height: auto;
+    padding: 20px;
+  }
+
+  .progress-area .row .content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress-area .details {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .progress-area .content .progress-bar {
+    width: 100%;
+  }
+
+  .uploaded-area .row .details {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .uploaded-area .row .details .size {
+    font-size: 10px;
+  }
 }
