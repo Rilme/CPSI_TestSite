@@ -1,204 +1,238 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Display Information</title>
-    <style>
-      body {
-        text-align: center;
-        margin-top: 50px;
-        background: linear-gradient(
-          to bottom right,
-          #bfbfbf,
-          #ffffff,
-          #bfbfbf
-        ); /* Light gray background */
-        color: #000; /* Dark text color */
-      }
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Display Information</title>
+        <style>
+          body {
+            text-align: center;
+            margin-top: 50px;
+            background: linear-gradient(to bottom right, #bfbfbf, #ffffff, #bfbfbf); /* Light gray background */
+            color: #000; /* Dark text color */
+          }
 
-      .main-content {
-        min-height: 100vh;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .patient-info {
-        color: #777; /* Grey color for answers */
-        margin-bottom: 15px;
-        background-color: #f5f5f5; /* Grey background for patient information */
-        border-radius: 40px; /* Rounded corners */
-        padding: 10px; /* Add padding to create space between text and cell */
-      }
-      .input-container {
-        margin-bottom: 20px;
-        background-color: #ffffff; /* Background color for the input container           */
-        border-radius: 10px; /* Rounded corners */
-        padding: 10px; /* Add padding to create space between input and c      
-          container */
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a slight shadow for 
-          depth */
-      }
+          .main-content {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
 
-      table {
-        margin-top: 20px;
-        border-collapse: collapse;
-        width: 80%;
-        max-width: 800px;
-        margin-bottom: 20px;
-        background-color: white; /* Set table background to white */
-        border-radius: 10px; /* Rounded corners */
-        overflow: hidden; /* Ensure content doesn't overflow rounded corners */
-      }
+          .patient-info {
+            color: #777; /* Grey color for answers */
+            margin-bottom: 15px;
+            background-color: #f5f5f5; /* Grey background for patient information */
+            border-radius: 40px; /* Rounded corners */
+            padding: 10px; /* Add padding to create space between text and cell */
+          }
 
-      th,
-      td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
-      }
+          .input-container {
+            margin-bottom: 20px;
+            background-color: #ffffff; /* Background color for the input container */
+            border-radius: 10px; /* Rounded corners */
+            padding: 10px; /* Add padding to create space between input and container */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a slight shadow for depth */
+          }
 
-      th {
-        background-color: #00bd51; /* green background for table headers */
-        color: #ffffff; /* White text color for table headers */
-      }
+          table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            background-color: white; /* Set table background to white */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Ensure content doesn't overflow rounded corners */
+          }
 
-      .patient-info {
-        color: #777; /* Grey color for answers */
-        margin-bottom: 15px;
-      }
+          th,
+          td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+          }
 
-      button {
-        background-color: #00bd51; /* Blue button background */
-        color: #ffffff; /* White text color */
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-top: 20px;
-      }
+          th {
+            background-color: #00bd51; /* green background for table headers */
+            color: #ffffff; /* White text color for table headers */
+          }
 
-      button:hover {
-        background-color: #000000; /* Darker blue on hover */
-      }
-    </style>
-  </head>
+          .patient-info {
+            color: #777; /* Grey color for answers */
+            margin-bottom: 15px;
+          }
 
-  <body>
-    <main class="main-content">
-    <img class="logo" src="trubridgelogo.png" />
-      <h2 class="title2">Extracted Information:</h2>
-      <table>
-        <tr>
-          <th>Field</th>
-          <th>Patient Information</th>
-        </tr>
-        <tr>
-          <td>First Name:</td>
-          <td id="displayFirstName" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Last Name:</td>
-          <td id="displayLastName" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Date of Birth:</td>
-          <td id="displayDob" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Address:</td>
-          <td id="displayAddress" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Driver's License Number:</td>
-          <td id="displayLicenseNumber" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Height:</td>
-          <td id="displayHeight" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Weight:</td>
-          <td id="displayWeight" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Driver License Expiration:</td>
-          <td id="displayExpiration" class="patient-info"></td>
-        </tr>
-        <tr>
-          <td>Sex:</td>
-          <td id="displaySex" class="patient-info"></td>
-        </tr>
-      </table>
+          button {
+            background-color: #00bd51; /* Blue button background */
+            color: #ffffff; /* White text color */
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+          }
 
-      <button onclick="goBack()">Back</button>
-      <button onclick="validate()">Validate</button>
-    </main>
+          button:hover {
+            background-color: #000000; /* Darker blue on hover */
+          }
+        </style>
+      </head>
+      <body>
+        <main class="main-content">
+          <img class="logo" src="trubridgelogo.png" />
+          <h2 class="title2">Extracted Information:</h2>
+          <table>
+            <tr>
+              <th>Field</th>
+              <th>Patient Information</th>
+            </tr>
+            <tr>
+              <td>First Name:</td>
+              <td id="displayFirstName" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Last Name:</td>
+              <td id="displayLastName" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Date of Birth:</td>
+              <td id="displayDob" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Address:</td>
+              <td id="displayAddress" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Driver's License Number:</td>
+              <td id="displayLicenseNumber" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Height:</td>
+              <td id="displayHeight" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Weight:</td>
+              <td id="displayWeight" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Driver License Expiration:</td>
+              <td id="displayExpiration" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Sex:</td>
+              <td id="displaySex" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Insurance Company:</td>
+              <td id="displayInsuranceCompany" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Member ID:</td>
+              <td id="displayMemberID" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Group Number:</td>
+              <td id="displayGroupNumber" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>RxBin:</td>
+              <td id="displayRxBin" class="patient-info"></td>
+            </tr>
+            <tr>
+              <td>Issuer:</td>
+              <td id="displayIssuer" class="patient-info"></td>
+            </tr>
+          </table>
 
-    <script>
-      function getStoredData() {
-        var firstName = sessionStorage.getItem("firstName");
-        var lastName = sessionStorage.getItem("lastName");
-        var dob = sessionStorage.getItem("dob");
-        var address = sessionStorage.getItem("address");
-        var licenseNumber = sessionStorage.getItem("licenseNumber");
-        var height = sessionStorage.getItem("height");
-        var weight = sessionStorage.getItem("weight");
-        var expiration = sessionStorage.getItem("expirationDate");
-        var sex = sessionStorage.getItem("sex");
-        return {
-          firstName,
-          lastName,
-          dob,
-          address,
-          licenseNumber,
-          height,
-          weight,
-          expiration,
-          sex,
-        };
-      }
+          <button onclick="goBack()">Back</button>
+          <button onclick="validate()">Validate</button>
+        </main>
 
-      function displayStoredData() {
-        var {
-          firstName,
-          lastName,
-          dob,
-          address,
-          licenseNumber,
-          height,
-          weight,
-          expiration,
-          sex,
-        } = getStoredData();
-        document.getElementById("displayFirstName").innerText = firstName;
-        document.getElementById("displayLastName").innerText = lastName;
-        document.getElementById("displayDob").innerText = dob;
-        document.getElementById("displayAddress").innerText = address;
-        document.getElementById("displayLicenseNumber").innerText =
-          licenseNumber;
-        document.getElementById("displayHeight").innerText = height;
-        document.getElementById("displayWeight").innerText = weight;
-        document.getElementById("displayExpiration").innerText = expiration;
-        document.getElementById("displaySex").innerText = sex;
-      }
+        <script>
+          function getStoredData() {
+            var firstName = sessionStorage.getItem("firstName");
+            var lastName = sessionStorage.getItem("lastName");
+            var dob = sessionStorage.getItem("dob");
+            var address = sessionStorage.getItem("address");
+            var licenseNumber = sessionStorage.getItem("licenseNumber");
+            var height = sessionStorage.getItem("height");
+            var weight = sessionStorage.getItem("weight");
+            var expiration = sessionStorage.getItem("expirationDate");
+            var sex = sessionStorage.getItem("sex");
+            var insuranceCompany = sessionStorage.getItem("insuranceCompany");
+            var memberID = sessionStorage.getItem("memberID");
+            var groupNumber = sessionStorage.getItem("groupNumber");
+            var rxBin = sessionStorage.getItem("rxBin");
+            var issuer = sessionStorage.getItem("issuer");
+            return {
+              firstName,
+              lastName,
+              dob,
+              address,
+              licenseNumber,
+              height,
+              weight,
+              expiration,
+              sex,
+              insuranceCompany,
+              memberID,
+              groupNumber,
+              rxBin,
+              issuer,
+            };
+          }
 
-      function goBack() {
-        window.location.href = "Manual.html";
-      }
+          function displayStoredData() {
+            var {
+              firstName,
+              lastName,
+              dob,
+              address,
+              licenseNumber,
+              height,
+              weight,
+              expiration,
+              sex,
+              insuranceCompany,
+              memberID,
+              groupNumber,
+              rxBin,
+              issuer,
+            } = getStoredData();
+            document.getElementById("displayFirstName").innerText = firstName;
+            document.getElementById("displayLastName").innerText = lastName;
+            document.getElementById("displayDob").innerText = dob;
+            document.getElementById("displayAddress").innerText = address;
+            document.getElementById("displayLicenseNumber").innerText =
+              licenseNumber;
+            document.getElementById("displayHeight").innerText = height;
+            document.getElementById("displayWeight").innerText = weight;
+            document.getElementById("displayExpiration").innerText = expiration;
+            document.getElementById("displaySex").innerText = sex;
+            document.getElementById("displayInsuranceCompany").innerText = insuranceCompany;
+            document.getElementById("displayMemberID").innerText = memberID;
+            document.getElementById("displayGroupNumber").innerText = groupNumber;
+            document.getElementById("displayRxBin").innerText = rxBin;
+            document.getElementById("displayIssuer").innerText = issuer;
+          }
 
-      function validate() {
-        alert(
-          "Thank you, this information will now be sent to your medical assistant.",
-        );
-        window.location.href = "index.html";
-      }
+          function goBack() {
+            window.location.href = "Manual.html";
+          }
 
-      displayStoredData();
-    </script>
-  </body>
-</html>
+          function validate() {
+            alert(
+              "Thank you, this information will now be sent to your medical assistant."
+            );
+            window.location.href = "index.html";
+          }
+
+          displayStoredData();
+        </script>
+      </body>
+      </html>
