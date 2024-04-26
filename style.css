@@ -1,44 +1,50 @@
 /* Import Google font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif; /* Set default font family */
 }
 
+/* Override font family for the body */
 body {
   font-family: 'Exo', sans-serif;
 }
 
+/* Style for selected text */
 ::selection {
   color: #fff;
   background: #00bd51;
 }
 
+/* Logo styling */
 .logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 50%; /* Adjust logo width as needed */
   margin-top: auto;
 }
 
+/* Title styling */
 .title {
   padding-top: 25px;
   font-size: 4rem;
   max-height: 100px;
   text-align: center;
-  color: #000000;
+  color: #000000; /* Black text color */
 }
 
+/* Secondary title styling */
 .title2 {
   text-align: center;
   margin-top: 50px;
-  /* Dark text color */
 }
 
+/* Upload and download section styling */
 .upload-dl {
   display: flex;
   align-items: center;
@@ -46,24 +52,26 @@ body {
   min-height: 75vh;
 }
 
+/* Container wrapper styling */
 .wrapper {
-  width: 430px;
+  width: 430px; /* Adjust wrapper width as needed */
   background: #fff;
   border-radius: 5px;
   padding: 30px;
   box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* Header styling within the wrapper */
 .wrapper header {
-  color: #000000;
+  color: #000000; /* Black header text color */
   font-size: 27px;
   font-weight: 600;
   text-align: center;
 }
 
-
+/* Form styling within the wrapper */
 .wrapper form {
-  height: 167px;
+  height: 167px; /* Adjust form height as needed */
   display: flex;
   cursor: pointer;
   margin: 30px 0;
@@ -71,11 +79,12 @@ body {
   justify-content: center;
   flex-direction: column;
   border-radius: 5px;
-  border: 2px dashed #000000;
+  border: 2px dashed #000000; /* Black dashed border */
 }
 
+/* Styling for elements within the form */
 form :where(i, p) {
-  color: #000000;
+  color: #000000; /* Black text color */
 }
 
 form i {
@@ -87,9 +96,10 @@ form p {
   font-size: 16px;
 }
 
+/* Styling for rows within sections */
 section .row {
   margin-bottom: 10px;
-  background: #E9F0FF;
+  background: #E9F0FF; /* Light blue background */
   list-style: none;
   padding: 15px 20px;
   border-radius: 5px;
@@ -99,7 +109,7 @@ section .row {
 }
 
 section .row i {
-  color: #00bd51;
+  color: #00bd51; /* Green icon color */
   font-size: 30px;
 }
 
@@ -107,6 +117,7 @@ section .details span {
   font-size: 14px;
 }
 
+/* Progress area styling */
 .progress-area .row .content {
   width: 100%;
   margin-left: 15px;
@@ -123,17 +134,18 @@ section .details span {
   height: 6px;
   width: 100%;
   margin-bottom: 4px;
-  background: #fff;
+  background: #fff; /* White progress bar background */
   border-radius: 30px;
 }
 
 .content .progress-bar .progress {
   height: 100%;
   width: 0%;
-  background: #00bd51;
+  background: #00bd51; /* Green progress bar color */
   border-radius: inherit;
 }
 
+/* Uploaded area styling */
 .uploaded-area {
   max-height: 232px;
   overflow-y: scroll;
@@ -159,7 +171,7 @@ section .details span {
 }
 
 .uploaded-area .row .details .size {
-  color: #404040;
+  color: #404040; /* Dark gray size text color */
   font-size: 11px;
 }
 
@@ -167,19 +179,19 @@ section .details span {
   font-size: 16px;
 }
 
+/* Area styling */
 .area {
-  background: linear-gradient(to bottom right, #bfbfbf, #ffffff, #bfbfbf);
+  background: linear-gradient(to bottom right, #bfbfbf, #ffffff, #bfbfbf); /* Gradient background */
   width: 100%;
   height: 100vh;
-
-
 }
 
+/* Button 2 styling */
 .button2 {
   width: 100%;
   border-radius: 4px; 
-  background-color: #00bd51;
-  color: white;
+  background-color: #00bd51; /* Green button color */
+  color: white; /* White button text color */
   padding: 2px 3px;
   border: none;
   cursor: pointer;
@@ -187,10 +199,11 @@ section .details span {
   font-size: 1.5rem;
 }
 
+/* Button styling */
 .button {
   width:100%;
-  background-color: #00bd51;
-  color: white;
+  background-color: #00bd51; /* Green button color */
+  color: white; /* White button text color */
   padding: 2px 3px;
   font-size: 1.5rem;
   border: none;
@@ -199,10 +212,12 @@ section .details span {
   font-weight: 600;
 }
 
+/* Button hover effect */
 button:hover {
-  background-color: #000000;
+  background-color: #000000; /* Black button hover color */
 }
 
+/* Media query for smaller screens */
 @media only screen and (max-width: 768px) {
   .wrapper form {
     height: auto;
@@ -233,6 +248,7 @@ button:hover {
   }
 }
 
+/* Additional styles for smaller screens */
 .wrapper form {
   height: auto;
   padding: 20px;
@@ -261,6 +277,7 @@ button:hover {
   font-size: 10px;
 }
 
+/* Additional style for upload text */
 .upload-text {
   margin-bottom: -1px; /* Adjust the margin as needed */
 }
